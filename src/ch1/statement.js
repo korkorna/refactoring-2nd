@@ -3,6 +3,10 @@
 const plays = require('./plays.json');
 const invoices = require('./invoices.json');
 
+function playFor(plays, perf) {
+    return plays[perf.playID];
+}
+
 function statement(invoice, plays) {
 
     let totalAmount = 0;
@@ -19,8 +23,8 @@ function statement(invoice, plays) {
         }).format;
 
     for(let perf of invoice.performances) {
-
-        const play = plays[perf.playID];
+        // #refactor 2 - 임시변수를 질의 함수로 바꾸기
+        const play = playFor(plays, perf);
         // #refactor 1 - 함수 추출하기
         let thisAmount = amountFor(perf, play);
 
