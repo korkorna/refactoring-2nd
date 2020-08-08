@@ -23,19 +23,21 @@ function statement(invoice, plays) {
         }).format;
 
     for(let perf of invoice.performances) {
-        // #refactor 2 - 임시변수를 질의 함수로 바꾸기
-        const play = playFor(plays, perf);
         // #refactor 1 - 함수 추출하기
-        let thisAmount = amountFor(perf, play);
+        // #refactor 2 - 임시변수를 질의 함수로 바꾸기
+        // #refactor 3 - 변수 인라인하기
+        let thisAmount = amountFor(perf, playFor(plays, perf));
 
         // Add volume credits
         volumeCredits += Math.max(perf.audience - 30, 0);
 
         // Add extra credit for every ten comedy attendees
-        if("comedy" === play.type) volumeCredits += Math.floor(perf.audience / 5);
+        // #refactor 3 - 변수 인라인하기
+        if("comedy" === playFor(plays, perf).type) volumeCredits += Math.floor(perf.audience / 5);
 
         // Print line for this order
-        result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+        // #refactor 3 - 변수 인라인하기
+        result += ` ${playFor(plays, perf).name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
 
         totalAmount += thisAmount;
     }
