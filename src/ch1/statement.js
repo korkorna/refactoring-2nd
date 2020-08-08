@@ -3,8 +3,14 @@
 const plays = require('./plays.json');
 const invoices = require('./invoices.json');
 
-function playFor(plays, perf) {
+function playFor(perf) {
     return plays[perf.playID];
+}
+
+function volumeCreditsFor(perf) {
+    let volumeCredits = Math.max(perf.audience - 30, 0);
+    if ("comedy" === playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
+    return volumeCredits;
 }
 
 function statement(invoice, plays) {
@@ -23,16 +29,11 @@ function statement(invoice, plays) {
         }).format;
 
     for(let perf of invoice.performances) {
-        // Add volume credits
-        volumeCredits += Math.max(perf.audience - 30, 0);
-
-        // Add extra credit for every ten comedy attendees
-        // #refactor 3 - 변수 인라인하기
-        if("comedy" === playFor(plays, perf).type) volumeCredits += Math.floor(perf.audience / 5);
+        volumeCredits += volumeCreditsFor(perf);
 
         // Print line for this order
         // #refactor 3 - 변수 인라인하기
-        result += ` ${playFor(plays, perf).name}: ${format(amountFor(perf)/100)} (${perf.audience} seats)\n`;
+        result += ` ${playFor(perf).name}: ${format(amountFor(perf)/100)} (${perf.audience} seats)\n`;
 
         totalAmount += amountFor(perf);
     }
@@ -48,7 +49,7 @@ function statement(invoice, plays) {
 function amountFor(aPerformance) {  //# 명확한 이름으로 변경
     let result = 0;
     // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
-    switch(playFor(plays, aPerformance).type) {
+    switch(playFor(aPerformance).type) {
         case "tragedy":
             result = 40000;
 
@@ -71,7 +72,7 @@ function amountFor(aPerformance) {  //# 명확한 이름으로 변경
 
         default:
             // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
-            throw new Error(`Unknown type: ${playFor(plays, aPerformance).type}`);
+            throw new Error(`Unknown type: ${playFor(aPerformance).type}`);
     }
     return result;
 }
