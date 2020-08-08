@@ -23,12 +23,6 @@ function statement(invoice, plays) {
         }).format;
 
     for(let perf of invoice.performances) {
-        // #refactor 1 - 함수 추출하기
-        // #refactor 2 - 임시변수를 질의 함수로 바꾸기
-        // #refactor 3 - 변수 인라인하기
-        // #refactor 4 - 2 필요없어진 매개변수 제거
-        let thisAmount = amountFor(perf);
-
         // Add volume credits
         volumeCredits += Math.max(perf.audience - 30, 0);
 
@@ -38,9 +32,9 @@ function statement(invoice, plays) {
 
         // Print line for this order
         // #refactor 3 - 변수 인라인하기
-        result += ` ${playFor(plays, perf).name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+        result += ` ${playFor(plays, perf).name}: ${format(amountFor(perf)/100)} (${perf.audience} seats)\n`;
 
-        totalAmount += thisAmount;
+        totalAmount += amountFor(perf);
     }
 
     result += `Amount owed is ${format(totalAmount / 100)}\n`;
