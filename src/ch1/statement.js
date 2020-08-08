@@ -3,6 +3,32 @@
 const plays = require('./plays.json');
 const invoices = require('./invoices.json');
 
+function statement(invoice, plays) {
+
+    let totalAmount = 0;
+
+    let volumeCredits = 0;
+
+    let result = `Statement for ${invoice.customer}\n`
+
+    for(let perf of invoice.performances) {
+        // Print line for this order
+        result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+
+        totalAmount += amountFor(perf);
+    }
+
+    for(let perf of invoice.performances) {
+        volumeCredits += volumeCreditsFor(perf);
+    }
+
+    result += `Amount owed is ${usd(totalAmount)}\n`;
+
+    result += `You earned ${volumeCredits} credits\n`;
+
+    return result;
+}
+
 function playFor(perf) {
     return plays[perf.playID];
 }
@@ -20,31 +46,6 @@ function usd(aNumber) {
             currency: "USD",
             minimumFractionDigits: 2
         }).format(aNumber/100);
-}
-
-function statement(invoice, plays) {
-
-    let totalAmount = 0;
-
-    let volumeCredits = 0;
-
-    let result = `Statement for ${invoice.customer}\n`
-
-    for(let perf of invoice.performances) {
-        volumeCredits += volumeCreditsFor(perf);
-
-        // Print line for this order
-        // #refactor 3 - 변수 인라인하기
-        result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
-
-        totalAmount += amountFor(perf);
-    }
-
-    result += `Amount owed is ${usd(totalAmount)}\n`;
-
-    result += `You earned ${volumeCredits} credits\n`;
-
-    return result;
 }
 
 // #refactor 4 - 2 필요없어진 매개변수 제거
