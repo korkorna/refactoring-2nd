@@ -26,7 +26,8 @@ function statement(invoice, plays) {
         // #refactor 1 - 함수 추출하기
         // #refactor 2 - 임시변수를 질의 함수로 바꾸기
         // #refactor 3 - 변수 인라인하기
-        let thisAmount = amountFor(perf, playFor(plays, perf));
+        // #refactor 4 - 2 필요없어진 매개변수 제거
+        let thisAmount = amountFor(perf);
 
         // Add volume credits
         volumeCredits += Math.max(perf.audience - 30, 0);
@@ -49,9 +50,11 @@ function statement(invoice, plays) {
     return result;
 }
 
-function amountFor(aPerformance, play) {  //# 명확한 이름으로 변경
+// #refactor 4 - 2 필요없어진 매개변수 제거
+function amountFor(aPerformance) {  //# 명확한 이름으로 변경
     let result = 0;
-    switch(play.type) {
+    // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
+    switch(playFor(plays, aPerformance).type) {
         case "tragedy":
             result = 40000;
 
@@ -73,7 +76,8 @@ function amountFor(aPerformance, play) {  //# 명확한 이름으로 변경
             break;
 
         default:
-            throw new Error(`Unknown type: ${play.type}`);
+            // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
+            throw new Error(`Unknown type: ${playFor(plays, aPerformance).type}`);
     }
     return result;
 }
