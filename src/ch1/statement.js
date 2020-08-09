@@ -4,12 +4,17 @@ const plays = require('./plays.json');
 const invoices = require('./invoices.json');
 
 function statement(invoice, plays) {
-    const statementData = {};
-    statementData.customer = invoice.customer;
-    statementData.performances = invoice.performances.map(enrichPerformance);
-    statementData.totalVolumeCredits = totalVolumeCredits(statementData);
-    statementData.totalAmount = totalAmount(statementData);
+    const statementData = createStatementData(invoice, plays);
     return renderPlainText(statementData, plays);
+
+    function createStatementData(invoice, plays) {
+        const statementData = {};
+        statementData.customer = invoice.customer;
+        statementData.performances = invoice.performances.map(enrichPerformance);
+        statementData.totalVolumeCredits = totalVolumeCredits(statementData);
+        statementData.totalAmount = totalAmount(statementData);
+        return statementData;
+    }
 
     function enrichPerformance(aPerformance) {
         const result = Object.assign({}, aPerformance);     // shallow copy
