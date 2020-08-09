@@ -11,14 +11,19 @@ function statement(invoice, plays) {
     return renderPlainText(statementData, plays);
     function enrichPerformance(aPerformance) {
         const result = Object.assign({}, aPerformance);     // shallow copy
+        result.play = playFor(result);
         return result;
+    }
+
+    function playFor(aPerformance) {
+        return plays[aPerformance.playID];
     }
 }
 
 function renderPlainText(statementData, plays) {
     let result = `Statement for ${statementData.customer}\n`
     for (let perf of statementData.performances) {
-        result += ` ${playFor(perf).name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
+        result += ` ${perf.play.name}: ${usd(amountFor(perf))} (${perf.audience} seats)\n`;
     }
     result += `Amount owed is ${usd(totalAmount())}\n`;
     result += `You earned ${totalVolumeCredits()} credits\n`;
@@ -40,13 +45,10 @@ function renderPlainText(statementData, plays) {
         return result;
     }
 
-    function playFor(aPerformance) {
-        return plays[aPerformance.playID];
-    }
 
     function volumeCreditsFor(aPerformance) {
         let result = Math.max(aPerformance.audience - 30, 0);
-        if ("comedy" === playFor(aPerformance).type) result += Math.floor(aPerformance.audience / 5);
+        if ("comedy" === aPerformance.play.type) result += Math.floor(aPerformance.audience / 5);
         return result;
     }
 
@@ -63,7 +65,7 @@ function renderPlainText(statementData, plays) {
     function amountFor(aPerformance) {  //# 명확한 이름으로 변경
         let result = 0;
         // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
-        switch(playFor(aPerformance).type) {
+        switch(aPerformance.play.type) {
             case "tragedy":
                 result = 40000;
 
@@ -86,7 +88,7 @@ function renderPlainText(statementData, plays) {
 
             default:
                 // #refactor 4 - 1 매개변수를 쿼리 함수로 변경
-                throw new Error(`Unknown type: ${playFor(aPerformance).type}`);
+                throw new Error(`Unknown type: ${aPerformance.play.type}`);
         }
         return result;
     }
