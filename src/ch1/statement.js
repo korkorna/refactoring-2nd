@@ -6,8 +6,13 @@ const invoices = require('./invoices.json');
 function statement(invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
-    statementData.performances = invoice.performances;
+    statementData.performances = invoice.performances.map(enrichPerformance);
+
     return renderPlainText(statementData, plays);
+    function enrichPerformance(aPerformance) {
+        const result = Object.assign({}, aPerformance);     // shallow copy
+        return result;
+    }
 }
 
 function renderPlainText(statementData, plays) {
