@@ -8,6 +8,11 @@ describe('province', function () {
         const asia = new Province(sampleProvinceData()); //픽스쳐 설정
         assert.equal(asia.shortfall, 5); // 검증
     }) ;
+
+    it('profit', function() {
+        const asia = new Province(sampleProvinceData());
+        assert.equal(asia.profit, 230);
+    })
 });
 
 function sampleProvinceData() {
