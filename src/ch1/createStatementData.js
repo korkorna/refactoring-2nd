@@ -48,7 +48,7 @@ module.exports = function (invoice, plays) {
         const result = Object.assign({}, aPerformance);     // shallow copy
         result.play = calculator.play;
         result.amount = calculator.amount;
-        result.volumeCredits = volumeCreditsFor(result);
+        result.volumeCredits = calculator.volumeCredits;
         return result;
     }
 
