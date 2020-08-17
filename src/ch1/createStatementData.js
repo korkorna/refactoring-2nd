@@ -35,16 +35,28 @@ class PerformanceCalculator {
     }
 }
 
+function createPerformanceCalculator(aPerformance, aPlay) {
+    return new PerformanceCalculator(aPerformance, aPlay);
+}
+
+class TragedyCalculator extends PerformanceCalculator {
+
+}
+
+class ComedyCalculator extends PerformanceCalculator {
+
+}
+
 module.exports = function (invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
     statementData.performances = invoice.performances.map(enrichPerformance);
     statementData.totalVolumeCredits = totalVolumeCredits(statementData);
     statementData.totalAmount = totalAmount(statementData);
-    return statementData;
+    return statementData;c
 
     function enrichPerformance(aPerformance) {
-        const calculator = new PerformanceCalculator(aPerformance, playFor(aPerformance));
+        const calculator = createPerformanceCalculator(aPerformance, playFor(aPerformance));
         const result = Object.assign({}, aPerformance);     // shallow copy
         result.play = calculator.play;
         result.amount = calculator.amount;
@@ -54,10 +66,6 @@ module.exports = function (invoice, plays) {
 
     function playFor(aPerformance) {
         return plays[aPerformance.playID];
-    }
-
-    function volumeCreditsFor(aPerformance) {
-        return new PerformanceCalculator(aPerformance, playFor(aPerformance)).volumeCredits;
     }
 
     function totalVolumeCredits(statementData) {
