@@ -7,21 +7,7 @@ class PerformanceCalculator {
     }
 
     get amount() {
-        let result = 0;
-        switch(this.play.type) {
-            case "tragedy":
-                throw new Error('error');
-            case "comedy":
-                result = 30000;
-                if(this.performance.audience > 20) {
-                    result += 10000 + 500 * (this.performance.audience - 20);
-                }
-                result += 300 * this.performance.audience;
-                break;
-            default:
-                throw new Error(`Unknown type: ${this.play.type}`);
-        }
-        return result;
+        throw new Error('subclass responsibility');
     }
 
     get volumeCredits() {
@@ -35,8 +21,10 @@ function createPerformanceCalculator(aPerformance, aPlay) {
     switch(aPlay.type) {
         case "tragedy":
             return new TragedyCalculator(aPerformance, aPlay);
+        case "comedy":
+            return new ComedyCalculator(aPerformance, aPlay);
         default:
-            return new PerformanceCalculator(aPerformance, aPlay);
+            throw new Error(`Unknown type: ${aPlay.type}`);
     }
 }
 
@@ -51,7 +39,14 @@ class TragedyCalculator extends PerformanceCalculator {
 }
 
 class ComedyCalculator extends PerformanceCalculator {
-
+    get amount() {
+        let result = 30000;
+        if(this.performance.audience > 20) {
+            result += 10000 + 500 * (this.performance.audience - 20);
+        }
+        result += 300 * this.performance.audience;
+        return result;
+    }
 }
 
 module.exports = function (invoice, plays) {
