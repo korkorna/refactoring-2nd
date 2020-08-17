@@ -1,5 +1,11 @@
 'use strict';
 
+class PerformanceCalculator {
+    constructor(aPermormance) {
+        this.performance = aPermormance;
+    }
+}
+
 module.exports = function (invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
@@ -9,6 +15,7 @@ module.exports = function (invoice, plays) {
     return statementData;
 
     function enrichPerformance(aPerformance) {
+        const calculator = new PerformanceCalculator(aPerformance);
         const result = Object.assign({}, aPerformance);     // shallow copy
         result.play = playFor(result);
         result.amount = amountFor(result);
