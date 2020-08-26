@@ -1,0 +1,5 @@
+'use strict'
+
+module.exports = function circum(radius) {
+    return 2 * Math.PI * radius;
+}
