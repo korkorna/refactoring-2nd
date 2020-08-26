@@ -19,11 +19,11 @@ function recordDueDate(invoice) {
 }
 
 function calculateOutstanding(invoice) {
-    let outstanding = 0;
+    let result = 0;
     for (const o of invoice.orders) {
-        outstanding += o.amount;
+        result += o.amount;
     }
-    return outstanding;
+    return result;
 }
 
 module.exports = function printOwing(invoice) {
