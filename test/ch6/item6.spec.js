@@ -7,6 +7,7 @@ describe('defaultOwner', function () {
    let spaceship;
    beforeEach(function() {
       spaceship = {};
+      setDefaultOwner({ firstName: '마틴', lastName: '파울러' });
    });
    it('success', function () {
       spaceship.owner = defaultOwner();
@@ -19,5 +20,12 @@ describe('defaultOwner', function () {
       spaceship.owner = defaultOwner();
       expect(spaceship.owner.firstName).equal('레베카');
       expect(spaceship.owner.lastName).equal('파슨스');
+   });
+
+   it('cannot modify defaultOwner', function () {
+      spaceship.owner = defaultOwner();
+      setDefaultOwner({ firstName: '레베카', lastName: '파슨스' })
+      expect(spaceship.owner.firstName).not.equal('레베카');
+      expect(spaceship.owner.lastName).not.equal('파슨스');
    });
 });
