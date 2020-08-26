@@ -6,5 +6,5 @@ function xxNewEngland(stateCode) {
 
 module.exports = function isNewEngland(aCustomer) {
     const stateCode = aCustomer.address.state;
-    return xxNewEngland(stateCode);
+    return xxNewEngland(aCustomer.address.state);
 }
