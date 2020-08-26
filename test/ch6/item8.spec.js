@@ -28,6 +28,6 @@ describe('Introduce Parameter Object', function () {
          {temp: 47, time: "2016-11-10 09:10"},
          {temp: 58, time: "2016-11-10 09:30"}
       ];
-      expect(readingOutsideRange(station, operatingPlan.temperatureFloor, range)).to.eql(expected);
+      expect(readingOutsideRange(station, range)).to.eql(expected);
    });
 });
