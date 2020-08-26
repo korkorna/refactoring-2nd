@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function readingOutsideRange(station, min, max, range) {
+module.exports = function readingOutsideRange(station, min, range) {
   return station.readings
-    .filter(r => r.temp < min || r.temp > max);
+    .filter(r => r.temp < min || r.temp > range.max);
 };
