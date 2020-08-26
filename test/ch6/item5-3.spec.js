@@ -18,7 +18,6 @@ describe('isNewEngland', function () {
          { address: {state: 'CT'} },
          { address: {state: 'ME'} }
       ];
-      console.log(someCustomers.filter(c => isNewEngland(c)))
-      expect(expected).to.eql(someCustomers.filter(c => isNewEngland(c)));
+      expect(expected).to.eql(someCustomers.filter(c => isNewEngland(c.address.state)));
    });
 });

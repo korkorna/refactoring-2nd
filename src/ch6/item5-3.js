@@ -1,9 +1,5 @@
 'use strict';
 
-function xxNewEngland(stateCode) {
+module.exports = function isNewEngland(stateCode) {
     return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(stateCode);
-}
-
-module.exports = function isNewEngland(aCustomer) {
-    return xxNewEngland(aCustomer.address.state);
 }
