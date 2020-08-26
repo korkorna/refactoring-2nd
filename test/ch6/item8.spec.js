@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 
 const readingOutsideRange = require('../../src/ch6/item8');
+const NumberRange = require('../../src/ch6/numberRange');
 
 const station = {
    name: "ZB1",
@@ -20,10 +21,13 @@ const operatingPlan = {
 
 describe('Introduce Parameter Object', function () {
    it('readingOutsideRange', function () {
+      const range = new NumberRange(operatingPlan.temperatureFloor, 
+                                    operatingPlan.temperatureCeiling);
+
       const expected = [
          {temp: 47, time: "2016-11-10 09:10"},
          {temp: 58, time: "2016-11-10 09:30"}
       ];
-      expect(readingOutsideRange(station, operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling)).to.eql(expected);
+      expect(readingOutsideRange(station, operatingPlan.temperatureFloor, operatingPlan.temperatureCeiling, range)).to.eql(expected);
    });
 });

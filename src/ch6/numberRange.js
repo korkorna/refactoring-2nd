@@ -1,6 +1,6 @@
 'use strict';
 
-module.expects = class NumberRange {
+module.exports = class NumberRange {  
   constructor(min, max) {
     this._data = {
       min: min,
@@ -15,4 +15,4 @@ module.expects = class NumberRange {
   get max() {
     return this._data.max;
   }
-}
+};
