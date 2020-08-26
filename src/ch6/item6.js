@@ -8,8 +8,7 @@ function setDefaultOwner(arg) {
     defaultOwner = arg;
 }
 
-module.epxorts = {
-    defaultOwner,
+module.exports = {
     getDefaultOwner,
     setDefaultOwner
 };
