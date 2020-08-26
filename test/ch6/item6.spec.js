@@ -1,11 +1,13 @@
 const expect = require('chai').expect;
 
-let defaultOwner = require('../../src/ch6/item6');
+let getDefaultOwner = require('../../src/ch6/item6').getDefaultOwner;
+const setDefaultOwner = require('../../src/ch6/item6').setDefaultOwner;
 
 describe('defaultOwner', function () {
    it('success', function () {
-      const expected = { firstName: '레베카', lastName: '파슨스' }
-      defaultOwner =  expected;
-      expect(expected).to.eql(defaultOwner);
+      let spaceship = {};
+      spaceship.owner = getDefaultOwner();
+      expect(spaceship.owner.firstName).equal('마틴');
+      expect(spaceship.owner.lastName).equal('파울러');
    });
 });
