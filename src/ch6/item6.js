@@ -1,14 +1,14 @@
 'use strict';
 
-let defaultOwner = { firstName: '마틴', lastName: '파울러' };
-function getDefaultOwner() {
-    return defaultOwner;
+let defaultOwnerData = { firstName: '마틴', lastName: '파울러' };
+function defaultOwner() {
+    return defaultOwnerData;
 }
 function setDefaultOwner(arg) {
-    defaultOwner = arg;
+    defaultOwnerData = arg;
 }
 
 module.exports = {
-    getDefaultOwner,
+    defaultOwner,
     setDefaultOwner
 };
