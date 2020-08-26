@@ -1,15 +1,15 @@
 'use strict';
 
 module.exports = class Clock {
-    constructor(year, month, day) {
+    constructor(year, month, date) {
         this._year = year;
         this._month = month;
-        this._day = day;
+        this._date = date;
     }
 
     static get today() {
         const now = new Date();
-        return new Clock(now.getFullYear(), now.getMonth(), now.getDay());
+        return new Clock(now.getFullYear(), now.getMonth(), now.getDate());
     }
 
     getFullYear() {
@@ -21,6 +21,6 @@ module.exports = class Clock {
     }
 
     getDate() {
-        return `${this._month}/${this._day}/${this._year}`;
+        return this._date;
     }
 };
