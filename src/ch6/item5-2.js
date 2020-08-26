@@ -1,4 +1,5 @@
 'use strict';
+const assert = require('assert');
 
 module.exports = class Book {
     constructor() {
@@ -10,6 +11,7 @@ module.exports = class Book {
     }
 
     zz_addReservation(customer, isPriority) {
+        assert(isPriority == true || isPriority == false);
         this._reservations.push(customer);
     }
 
