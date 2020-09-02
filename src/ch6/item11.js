@@ -8,8 +8,7 @@ module.exports = function priceOrder(product, quantity, shippingMethod) {
 function calculatePricingData(product, quantity) {
     const basePrice = product.basePrice * quantity;
     const discount = Math.max(quantity - product.discountThreshold, 0) * product.basePrice * product.discountRate;
-    const priceData = {basePrice: basePrice, quantity: quantity, discount: discount};
-    return priceData;
+    return {basePrice: basePrice, quantity: quantity, discount: discount};
 }
 
 function applyShipping(priceData, shippingMethod) {
