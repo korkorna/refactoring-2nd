@@ -17,8 +17,7 @@ public class OrderCounter {
     }
 
     static long run(String[] args) throws java.io.IOException {
-        CommandLine commandLine = parseCommandLine(args);
-        return countOrders(commandLine);
+        return countOrders(parseCommandLine(args));
     }
 
     private static CommandLine parseCommandLine(String[] args) {
