@@ -1,7 +1,8 @@
 'use strict';
-const { acquireReading, baseRate } = require('./item10');
+const { acquireReading, baseRate, enrichReading } = require('./item10');
 
-const aReading = acquireReading();
+const rawReading = acquireReading();
+const aReading = enrichReading(rawReading);
 const baseCharge = baseRate(aReading.month, aReading.year) * aReading.quantity;
 
 module.exports = baseCharge;
