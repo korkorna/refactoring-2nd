@@ -19,13 +19,13 @@ public class OrderCounter {
     static long run(String[] args) throws java.io.IOException {
         if (args.length == 0) throw new RuntimeException("파일명을 입력하세요.");
         CommandLine commandLine = new CommandLine();
-        String filename = args[args.length -1];
+        commandLine.filename = args[args.length -1];
         commandLine.onlyCountReady = Stream.of(args).anyMatch(arg -> "-r".equals(arg));
-        return countOrders(commandLine, filename);
+        return countOrders(commandLine);
     }
 
-    private static long countOrders(CommandLine commandLine, String filename) throws java.io.IOException {
-        File input = Paths.get(filename).toFile();
+    private static long countOrders(CommandLine commandLine) throws java.io.IOException {
+        File input = Paths.get(commandLine.filename).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
         if (commandLine.onlyCountReady) {
@@ -39,6 +39,7 @@ public class OrderCounter {
 
     private static class CommandLine {
         public boolean onlyCountReady;
+        public String filename;
     }
 
 }
