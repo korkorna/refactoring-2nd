@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 const reading = {
     customer: "ivan",
     quantity: 10,
@@ -19,8 +21,14 @@ function taxThreshold(year) {
     return 0.3
 }
 
+function enrichReading(original) {
+    const result = _.cloneDeep(original);
+    return result;
+}
+
 module.exports = {
     acquireReading,
     baseRate,
-    taxThreshold
+    taxThreshold,
+    enrichReading
 };
