@@ -3,7 +3,7 @@ const { acquireReading, baseRate, taxThreshold, enrichReading } = require('./ite
 
 const rawReading = acquireReading();
 const aReading = enrichReading(rawReading);
-const base = (baseRate(aReading.month, aReading.year) * aReading.quantity);
+const base = aReading.baseCharge;
 const taxableCharge = Math.max(0, base - taxThreshold(this.year));
 
 module.exports = taxableCharge;
