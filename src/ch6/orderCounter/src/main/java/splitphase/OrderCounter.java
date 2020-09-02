@@ -24,7 +24,7 @@ public class OrderCounter {
         return countOrders(commandLine, args, filename);
     }
 
-    private static long countOrders(CommandLine commandLine, String[] args, String filename) throws java.io.IOException {
+    private static long countOrders(CommandLine commandLine, String filename) throws java.io.IOException {
         File input = Paths.get(filename).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
