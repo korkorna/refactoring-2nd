@@ -27,8 +27,8 @@ public class OrderCounter {
         File input = Paths.get(filename).toFile();
         ObjectMapper mapper = new ObjectMapper();
         Order[] orders = mapper.readValue(input, Order[].class);
-        boolean onlyCountReady = Stream.of(args).anyMatch(arg -> "-r".equals(arg));
-        if (onlyCountReady) {
+        commandLine.onlyCountReady = Stream.of(args).anyMatch(arg -> "-r".equals(arg));
+        if (commandLine.onlyCountReady) {
             return Stream.of(orders)
                     .filter(o -> "ready".equals(o.status))
                     .count();
@@ -38,6 +38,7 @@ public class OrderCounter {
     }
 
     private static class CommandLine {
+        public boolean onlyCountReady;
     }
 
 }
