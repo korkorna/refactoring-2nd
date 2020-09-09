@@ -9,6 +9,9 @@ class Organization {
     set name(aString) {
         this._data.name = aString;
     }
+    get name() {
+        return this._data.name;
+    }
 }
 
 const organization = new Organization(_organization);
