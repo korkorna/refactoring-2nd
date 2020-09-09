@@ -14,7 +14,7 @@ class Person {
     }
 
     get telephoneNumber() {
-        return this._telephoneNumber.telephoneNumber;
+        return this._telephoneNumber.toString;
     }
 
     get officeAreaCode() {
@@ -39,7 +39,7 @@ class TelephoneNumber {
         this._areaCode = areaCode;
         this._number = number;
     }
-    get telephoneNumber() {
+    get toString() {
         return `(${this.areaCode}) ${this.number}`;
     }
 
