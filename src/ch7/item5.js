@@ -26,21 +26,21 @@ class Person {
     }
 
     get officeNumber() {
-        return this._telephoneNumber._officeNumber;
+        return this._telephoneNumber.number;
     }
 
     set officeNumber(value) {
-        this._telephoneNumber._officeNumber = value;
+        this._telephoneNumber.number = value;
     }
 }
 
 class TelephoneNumber {
-    constructor(areaCode, officeNumber) {
+    constructor(areaCode, number) {
         this._areaCode = areaCode;
-        this._officeNumber = officeNumber;
+        this._number = number;
     }
     get telephoneNumber() {
-        return `(${this.areaCode}) ${this.officeNumber}`;
+        return `(${this.areaCode}) ${this.number}`;
     }
 
     get areaCode() {
@@ -51,12 +51,12 @@ class TelephoneNumber {
         this._areaCode = value;
     }
 
-    get officeNumber() {
-        return this._officeNumber;
+    get number() {
+        return this._number;
     }
 
-    set officeNumber(value) {
-        this._officeNumber = value;
+    set number(value) {
+        this._number = value;
     }
 }
 

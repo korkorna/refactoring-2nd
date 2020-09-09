@@ -14,6 +14,6 @@ describe('Extract Class', function () {
     it('telephoneNumber', function () {
         const telephoneNumber = new TelephoneNumber('82', '123-1234');
         expect(telephoneNumber.areaCode).equal('82');
-        expect(telephoneNumber.officeNumber).equal('123-1234');
+        expect(telephoneNumber.number).equal('123-1234');
     });
 });
