@@ -1,5 +1,7 @@
 'use strict';
 
+const _ = require('lodash');
+
 let _customerData = {
     "1920": {
         name: "martin",
@@ -43,6 +45,10 @@ class CustomerData {
     usage(customerId, year, month) {
         return this._data[customerId].usages[year][month];
     }
+
+    get rawData() {
+        return _.cloneDeep(this._data);
+    }
 }
 
 let customerData = new CustomerData(_customerData);
@@ -60,8 +66,8 @@ function setRawDataOfCustomer(arg) {
 }
 
 function compareUsage (customerID, laterYear, month) {
-    const later = getCustomerData().usage(customerID, laterYear, month);
-    const earlier = getCustomerData().usage(customerID, laterYear - 1, month);
+    const later = getCustomerData().rawData[customerID].usages[laterYear][month];
+    const earlier = getCustomerData().rawData[customerID].usages[laterYear-1][month];
     return {laterAmount: later, change: later - earlier};
 }
 
