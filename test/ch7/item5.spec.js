@@ -12,7 +12,8 @@ describe('Extract Class', function () {
     });
 
     it('telephoneNumber', function () {
-        const telephoneNumber = new TelephoneNumber('82');
+        const telephoneNumber = new TelephoneNumber('82', '123-1234');
         expect(telephoneNumber.officeAreaCode).equal('82');
+        expect(telephoneNumber.officeNumber).equal('123-1234');
     });
 });
