@@ -5,7 +5,7 @@ const { Order, Priority } = require('../../src/ch7/item3');
 
 function highPriorityCount(aList) {
     return aList
-        .filter(o => "high" === o.priority || "rush" === o.priority)
+        .filter(o => "high" === o.prioirtyString || "rush" === o.prioirtyString)
         .length;
 }
 

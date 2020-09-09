@@ -5,7 +5,8 @@ class Order {
         this._priority = new Priority(data.priority);
     }
 
-    get priority() {return this._priority.toString();}
+    get priority() {return this._priority;}
+    get prioirtyString() {return this._priority.toString()}
     set priority(aString) {this._priority = new Priority(aString);}
 }
 
