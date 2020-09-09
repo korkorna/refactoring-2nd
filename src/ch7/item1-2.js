@@ -53,10 +53,15 @@ function compareUsage (customerID, laterYear, month) {
     return {laterAmount: later, change: later - earlier};
 }
 
+function setUsage(customerId, year, month, amount) {
+    getRawDataOfCustomer()[customerId].usages[year][month] = amount;
+}
+
 module.exports = {
     customerData,
     getRawDataOfCustomer,
-    compareUsage
+    compareUsage,
+    setUsage
 };
 
 

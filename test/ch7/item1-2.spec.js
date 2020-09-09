@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const { customerData, getRawDataOfCustomer, compareUsage } = require('../../src/ch7/item1-2');
+const { customerData, getRawDataOfCustomer, compareUsage, setUsage } = require('../../src/ch7/item1-2');
 
 describe('EncapsulateRecord(nested record)', function () {
 
@@ -18,7 +18,7 @@ describe('EncapsulateRecord(nested record)', function () {
     });
 
     it ('customer usage 수정', function () {
-        getRawDataOfCustomer()[customerId].usages[year][month] = 60;
+        setUsage(customerId, year, month, 60);
         expect(getRawDataOfCustomer()[customerId].usages[year][month]).equal(60);
     });
 
