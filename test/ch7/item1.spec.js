@@ -10,7 +10,7 @@ describe('EncapsulateRecord', function () {
     });
 
     it ('organzation 수정', function () {
-        organization.name = '니콜라';
+        getRawDataofOrganzation().name = '니콜라';
         expect(getRawDataofOrganzation().name).equal('니콜라');
     });
 });

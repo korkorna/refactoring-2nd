@@ -12,8 +12,12 @@ const organization = new Organization(_organization);
 function getRawDataofOrganzation() {
     return organization._data;
 }
+function getOrganization() {
+    return organization;
+}
 
 module.exports = {
     organization,
-    getRawDataofOrganzation
+    getRawDataofOrganzation,
+    getOrganization
 };
