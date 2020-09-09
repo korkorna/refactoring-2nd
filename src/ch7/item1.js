@@ -1,9 +1,16 @@
 'use strict';
 
-const organization = { name: "애크미 구스베리", country: "GB" };
+const _organization = { name: "애크미 구스베리", country: "GB" };
 
+class Organization {
+    constructor(data) {
+        this._data = data;
+    }
+}
+
+const organization = new Organization(_organization);
 function getRawDataofOrganzation() {
-    return organization;
+    return organization._data;
 }
 
 module.exports = {
