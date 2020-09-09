@@ -1,6 +1,6 @@
 'use strict';
 
-let customerData = {
+let _customerData = {
     "1920": {
         name: "martin",
         id: "1920",
@@ -31,12 +31,20 @@ let customerData = {
     }
 };
 
+class CustomerData {
+    constructor(data) {
+        this._data = data;
+    }
+}
+
+let customerData = new CustomerData(_customerData);
+
 function getRawDataOfCustomer() {
-    return customerData;
+    return customerData._data;
 }
 
 function setRawDataOfCustomer(arg) {
-    customerData = arg;
+    customerData = new CustomerData(arg);
 }
 
 function compareUsage (customerID, laterYear, month) {
