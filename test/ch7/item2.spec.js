@@ -30,7 +30,7 @@ describe('2.Encapsulate Collection', function () {
     });
 
     it ('수업 추가 성공', function () {
-        person.courses.push(new Course("과학", true))
+        person.addCourse(new Course("과학", true))
         expect(numberAdvancedCources(person)).equal(4);
     });
 
