@@ -1,6 +1,6 @@
 'use strict';
 
-const customerData = {
+let customerData = {
     "1920": {
         name: "martin",
         id: "1920",
@@ -31,14 +31,23 @@ const customerData = {
     }
 };
 
+function getRawDataOfCustomer() {
+    return customerData;
+}
+
+function setRawDataOfCustomer(arg) {
+    customerData = arg;
+}
+
 function compareUsage (customerID, laterYear, month) {
-    const later = customerData[customerID].usages[laterYear][month];
-    const earlier = customerData[customerID].usages[laterYear - 1][month];
+    const later = getRawDataOfCustomer()[customerID].usages[laterYear][month];
+    const earlier = getRawDataOfCustomer()[customerID].usages[laterYear - 1][month];
     return {laterAmount: later, change: later - earlier};
 }
 
 module.exports = {
     customerData,
+    getRawDataOfCustomer,
     compareUsage
 };
 
