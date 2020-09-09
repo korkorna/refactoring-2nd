@@ -5,7 +5,7 @@ class Person {
         this._name = name;
         this._officeAreaCode = officeAreaCode;
         this._officeNumber = officeNumber;
-        this._telephoneNumber = new TelephoneNumber();
+        this._telephoneNumber = new TelephoneNumber(officeAreaCode);
     }
 
     get name() {
@@ -20,11 +20,11 @@ class Person {
     }
 
     get officeAreaCode() {
-        return this._officeAreaCode;
+        return this._telephoneNumber._officeAreaCode;
     }
 
     set officeAreaCode(value) {
-        this._officeAreaCode = value;
+        this._telephoneNumber._officeAreaCode = value;
     }
 
     get officeNumber() {
@@ -37,7 +37,17 @@ class Person {
 }
 
 class TelephoneNumber {
+    constructor(officeAreaCode) {
+        this._officeAreaCode = officeAreaCode;
+    }
 
+    get officeAreaCode() {
+        return this._officeAreaCode;
+    }
+
+    set officeAreaCode(value) {
+        this._officeAreaCode = value;
+    }
 }
 
 module.exports = {

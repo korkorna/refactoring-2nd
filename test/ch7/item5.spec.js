@@ -10,4 +10,9 @@ describe('Extract Class', function () {
         expect(person.name).equal('마틴 파울러');
         expect(person.telephoneNumber).equal('(82) 123-1234');
     });
+
+    it('telephoneNumber', function () {
+        const telephoneNumber = new TelephoneNumber('82');
+        expect(telephoneNumber.officeAreaCode).equal('82');
+    });
 });
