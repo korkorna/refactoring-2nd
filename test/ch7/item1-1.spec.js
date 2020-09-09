@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const getOrganization = require('../../src/ch7/item1');
+const getOrganization = require('../../src/ch7/item1-1');
 
 describe('EncapsulateRecord', function () {
 
