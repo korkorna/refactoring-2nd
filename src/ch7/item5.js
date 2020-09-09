@@ -3,8 +3,6 @@
 class Person {
     constructor(name, officeAreaCode, officeNumber) {
         this._name = name;
-        this._officeAreaCode = officeAreaCode;
-        this._officeNumber = officeNumber;
         this._telephoneNumber = new TelephoneNumber(officeAreaCode, officeNumber);
     }
 
