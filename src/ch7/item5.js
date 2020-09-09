@@ -35,4 +35,10 @@ class Person {
     }
 }
 
-module.exports = Person;
+class TelephoneNumber {
+
+}
+
+module.exports = {
+    Person, TelephoneNumber
+};

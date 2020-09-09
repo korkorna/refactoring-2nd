@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const Person = require('../../src/ch7/item5');
+const { Person, TelephoneNumber } = require('../../src/ch7/item5');
 
 describe('Extract Class', function () {
 
