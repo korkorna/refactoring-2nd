@@ -15,11 +15,11 @@ describe('EncapsulateRecord', function () {
     });
 
     it ('organzation county 읽기', function () {
-        expect(getRawDataofOrganzation().country).equal('GB');
+        expect(getOrganization().country).equal('GB');
     });
 
     it ('organzation county 수정', function () {
         getOrganization().country = 'EN';
-        expect(getRawDataofOrganzation().country).equal('EN');
+        expect(getOrganization().country).equal('EN');
     });
 });

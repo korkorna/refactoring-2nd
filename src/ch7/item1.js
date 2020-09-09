@@ -15,6 +15,9 @@ class Organization {
     set country(aString) {
         this._data.country = aString;
     }
+    get country() {
+        return this._data.country;
+    }
 }
 
 const organization = new Organization(_organization);
