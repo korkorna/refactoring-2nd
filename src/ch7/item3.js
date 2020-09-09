@@ -9,4 +9,13 @@ class Order {
     set priority(aString) {this._priority = aString;}
 }
 
-module.exports = Order;
+class Prioirty {
+    constructor(value) {
+        this._value = value;
+    }
+    toString() {return this._value;}
+}
+
+module.exports = {
+    Order,Prioirty
+};
