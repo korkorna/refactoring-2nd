@@ -16,7 +16,7 @@ class Person {
     }
 
     get telephoneNumber() {
-        return `(${this.officeAreaCode}) ${this.officeNumber}`;
+        return this._telephoneNumber.telephoneNumber;
     }
 
     get officeAreaCode() {
@@ -40,6 +40,9 @@ class TelephoneNumber {
     constructor(officeAreaCode, officeNumber) {
         this._officeAreaCode = officeAreaCode;
         this._officeNumber = officeNumber;
+    }
+    get telephoneNumber() {
+        return `(${this.officeAreaCode}) ${this.officeNumber}`;
     }
 
     get officeAreaCode() {
