@@ -11,6 +11,12 @@ class Person {
     addCourse(aCourse) {
         this._courses.push(aCourse);
     }
+    removeCourse(aCourse, fnIfAbsent = () => {throw new RangeError();}) {
+        //const index = this._courses.indexOf(aCourse);
+        const index = this._courses.findIndex(c => c.name === aCourse.name);
+        if (index == -1) fnIfAbsent();
+        else this._courses.splice(index, 1);
+    }
 }
 
 class Course {

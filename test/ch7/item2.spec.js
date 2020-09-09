@@ -30,8 +30,17 @@ describe('2.Encapsulate Collection', function () {
     });
 
     it ('수업 추가 성공', function () {
-        person.addCourse(new Course("과학", true))
+        person.addCourse(new Course("과학", true));
         expect(numberAdvancedCources(person)).equal(4);
+    });
+
+    it ('수업 삭제 성공', function () {
+        person.removeCourse(new Course("국어", true));
+        expect(numberAdvancedCources(person)).equal(2);
+    });
+
+    it ('존재하지 않는 수업 삭제시 RangeError 발생', function () {
+        expect(() => person.removeCourse(new Course("부동산", false))).to.throw(RangeError);
     });
 
     // it ('수업 추가 - 다른 타입의 클래스 추가', function () {
