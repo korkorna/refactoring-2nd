@@ -35,9 +35,17 @@ class CustomerData {
     constructor(data) {
         this._data = data;
     }
+
+    setUsage(customerId, year, month, amount) {
+        this._data[customerId].usages[year][month] = amount;
+    }
 }
 
 let customerData = new CustomerData(_customerData);
+
+function getCustomerData() {
+    return customerData;
+}
 
 function getRawDataOfCustomer() {
     return customerData._data;
@@ -53,15 +61,11 @@ function compareUsage (customerID, laterYear, month) {
     return {laterAmount: later, change: later - earlier};
 }
 
-function setUsage(customerId, year, month, amount) {
-    getRawDataOfCustomer()[customerId].usages[year][month] = amount;
-}
-
 module.exports = {
     customerData,
     getRawDataOfCustomer,
     compareUsage,
-    setUsage
+    getCustomerData
 };
 
 
