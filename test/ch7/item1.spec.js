@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const { organization, getRawDataofOrganzation } = require('../../src/ch7/item1');
+const { organization, getRawDataofOrganzation, getOrganization } = require('../../src/ch7/item1');
 
 describe('EncapsulateRecord', function () {
 
@@ -10,7 +10,7 @@ describe('EncapsulateRecord', function () {
     });
 
     it ('organzation 수정', function () {
-        getRawDataofOrganzation().name = '니콜라';
+        getOrganization().name = '니콜라';
         expect(getRawDataofOrganzation().name).equal('니콜라');
     });
 });
