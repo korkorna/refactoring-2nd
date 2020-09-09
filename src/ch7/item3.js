@@ -2,14 +2,14 @@
 
 class Order {
     constructor(data) {
-        this._priority = new Prioirty(data.priority);
+        this._priority = new Priority(data.priority);
     }
 
     get priority() {return this._priority.toString();}
-    set priority(aString) {this._priority = new Prioirty(aString);}
+    set priority(aString) {this._priority = new Priority(aString);}
 }
 
-class Prioirty {
+class Priority {
     constructor(value) {
         this._value = value;
     }
@@ -17,5 +17,5 @@ class Prioirty {
 }
 
 module.exports = {
-    Order,Prioirty
+    Order,Priority
 };
