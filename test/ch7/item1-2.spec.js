@@ -14,12 +14,12 @@ describe('EncapsulateRecord(nested record)', function () {
     });
 
     it ('customer usage 읽기', function () {
-        expect(getRawDataOfCustomer()[customerId].usages[year][month]).equal(50);
+        expect(getCustomerData().usage(customerId, year, month)).equal(50);
     });
 
     it ('customer usage 수정', function () {
         getCustomerData().setUsage(customerId, year, month, 60);
-        expect(getRawDataOfCustomer()[customerId].usages[year][month]).equal(60);
+        expect(getCustomerData().usage(customerId, year, month)).equal(60);
     });
 
     it ('customer compaseUsage 읽기', function () {
