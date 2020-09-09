@@ -12,6 +12,9 @@ class Organization {
     get name() {
         return this._data.name;
     }
+    set country(aString) {
+        this._data.country = aString;
+    }
 }
 
 const organization = new Organization(_organization);
