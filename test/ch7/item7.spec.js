@@ -17,7 +17,7 @@ describe('hideDelegate', function () {
 
     it('manager 조회', function () {
         const expected = '매니저';
-        expect(person.department.manager.name).equal(expected);
+        expect(person.manager.name).equal(expected);
     });
 
 });
