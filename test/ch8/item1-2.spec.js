@@ -21,4 +21,9 @@ describe('MoveFunction-2', function () {
         expect(account.overdraftCharge).equal(12.25);
     });
 
+    it ('AccountType overdraftCharge', function () {
+        const type = new AccountType();
+        expect(type.overdraftCharge(7)).equal(12.25);
+    });
+
 });
