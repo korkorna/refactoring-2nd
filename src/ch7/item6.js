@@ -8,6 +8,7 @@ class TrackingInformation {
 class Shipment {
     get shippingCompany() {return this._shippingCompany;}
     set shippingCompany(arg) {this._shippingCompany = arg;}
+    set trackingNumber(arg) {this._trackingInformation._trackingNumber = arg;}
     get trackingInfo() {
         return `${this.shippingCompany}: ${this._trackingInformation.trackingNumber}`;
     }
