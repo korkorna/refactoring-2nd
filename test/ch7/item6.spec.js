@@ -9,11 +9,10 @@ describe('Inline Class TrackingInformation', function () {
 
     beforeEach(function () {
         tranckingInformation = new TrackingInformation();
-        tranckingInformation.shippingCompany = 'CJ통운';
-        tranckingInformation.trackingNumber = 1111;
 
         shipment = new Shipment();
         shipment.shippingCompany = 'CJ통운';
+        shipment.trackingNumber = 1111;
         shipment.trackingInformation = tranckingInformation;
     })
 
