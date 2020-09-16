@@ -2,11 +2,11 @@
 
 function trackSummary(points) {
     const totalTime = calculateTime();
-    const totalDistance = top_calculateDistance(points);
-    const pace = totalTime / 60 / totalDistance;
+    const totalDistanceCache = totalDistance(points);
+    const pace = totalTime / 60 / totalDistanceCache;
     return {
         time: totalTime,
-        distance: totalDistance,
+        distance: totalDistanceCache,
         pace: pace
     };
 
@@ -15,7 +15,7 @@ function trackSummary(points) {
     }
 }
 
-function top_calculateDistance(points) {
+function totalDistance(points) {
     let result = 0;
     for (let i = 1; i < points.length; i++) {
         result += distance(points[i-1], points[i]);
@@ -41,5 +41,5 @@ function top_calculateDistance(points) {
 }
 
 module.exports = {
-    trackSummary, top_calculateDistance
+    trackSummary, top_calculateDistance: totalDistance
 };
