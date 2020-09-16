@@ -13,6 +13,7 @@ describe('Inline Class TrackingInformation', function () {
         tranckingInformation.trackingNumber = 1111;
 
         shipment = new Shipment();
+        shipment.shippingCompany = 'CJ통운';
         shipment.trackingInformation = tranckingInformation;
     })
 
