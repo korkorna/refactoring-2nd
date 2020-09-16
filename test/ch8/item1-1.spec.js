@@ -35,4 +35,10 @@ describe('MoveFunction', function () {
         const expected = 8.28566498158589;
         expect(distance(points[1], points[0])).equal(expected);
     });
+
+    it ('radians', function () {
+        const point = {lat: 37.498095, lon: 127.027610};
+        const expected = 0.6544652209756231;
+        expect(radians(point['lat'])).equal(expected);
+    });
 });
