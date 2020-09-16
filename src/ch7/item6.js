@@ -5,15 +5,12 @@ class TrackingInformation {
     set shippingCompany(arg) {this._shippingCompany = arg;}
     get trackingNumber() {return this._trackingNumber;}
     set trackingNumber(arg) {this._trackingNumber = arg;}
-    get display() {
-        return `${this.shippingCompany}: ${this.trackingNumber}`;
-    }
 }
 
 class Shipment {
     set shippingCompany(arg) {this._trackingInformation._shippingCompany = arg;}
     get trackingInfo() {
-        return this._trackingInformation.display;
+        return `${this._trackingInformation.shippingCompany}: ${this._trackingInformation.trackingNumber}`;
     }
     get trackingInformation() {return this._trackingInformation;}
     set trackingInformation(aTrackingInformation) {
