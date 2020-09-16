@@ -19,5 +19,10 @@ describe('Inline Class TrackingInformation', function () {
     it('vendor 조회', function () {
         expect(shipment.trackingInfo).equal('CJ통운: 1111');
     });
+
+    it('vendor 수정', function () {
+        shipment.shippingCompany = '한진택배';
+        expect(shipment.trackingInfo).equal('한진택배: 1111');
+    });
 });
 

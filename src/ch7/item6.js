@@ -11,6 +11,7 @@ class TrackingInformation {
 }
 
 class Shipment {
+    set shippingCompany(arg) {this._trackingInformation._shippingCompany = arg;}
     get trackingInfo() {
         return this._trackingInformation.display;
     }
