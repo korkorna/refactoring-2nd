@@ -1,19 +1,15 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const { TrackingInformation, Shipment } = require('../../src/ch7/item6');
+const { Shipment } = require('../../src/ch7/item6');
 
 describe('Inline Class TrackingInformation', function () {
-    let tranckingInformation,
-        shipment;
+    let shipment;
 
     beforeEach(function () {
-        tranckingInformation = new TrackingInformation();
-
         shipment = new Shipment();
         shipment.shippingCompany = 'CJ통운';
         shipment.trackingNumber = 1111;
-        shipment.trackingInformation = tranckingInformation;
     })
 
     it('vendor 조회', function () {
