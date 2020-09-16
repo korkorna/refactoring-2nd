@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const { trackSummary, top_calculateDistance } = require('../../src/ch8/item1-1');
+const { trackSummary, totalDistance, distance, radians } = require('../../src/ch8/item1-1');
 
 describe('MoveFunction', function () {
 
@@ -24,6 +24,15 @@ describe('MoveFunction', function () {
             {lat: 37.3977555, lon: 127.1103127},
         ];
         const expected = 8.28566498158589;
-        expect(top_calculateDistance(points)).equal(expected);
+        expect(totalDistance(points)).equal(expected);
+    });
+
+    it ('distance', function () {
+        const points = [
+            {lat: 37.498095, lon: 127.027610},
+            {lat: 37.3977555, lon: 127.1103127},
+        ];
+        const expected = 8.28566498158589;
+        expect(distance(points[1], points[0])).equal(expected);
     });
 });
