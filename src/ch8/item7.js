@@ -1,9 +1,7 @@
 'use strict';
 
 function getYoungestAndTotalSalary(people) {
-    let totalSalary = calcTotalSalary();
-    let youngest = getYoungest();
-    return `youngestAge: ${youngest}, totalSalary: ${totalSalary}`;
+    return `youngestAge: ${youngestAge()}, totalSalary: ${calcTotalSalary()}`;
 
     function calcTotalSalary() {
         let totalSalary = 0;
@@ -13,7 +11,7 @@ function getYoungestAndTotalSalary(people) {
         return totalSalary;
     }
 
-    function getYoungest() {
+    function youngestAge() {
         let youngest = people[0] ? people[0].age : Infinity;
         for (const p of people) {
             if (p.age < youngest) youngest = p.age;
