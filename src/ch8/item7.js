@@ -4,19 +4,11 @@ function getYoungestAndTotalSalary(people) {
     return `youngestAge: ${youngestAge()}, totalSalary: ${calcTotalSalary()}`;
 
     function calcTotalSalary() {
-        let totalSalary = 0;
-        for (const p of people) {
-            totalSalary += p.salary;
-        }
-        return totalSalary;
+        return people.reduce((total, p) => total + p.salary, 0);
     }
 
     function youngestAge() {
-        let youngest = people[0] ? people[0].age : Infinity;
-        for (const p of people) {
-            if (p.age < youngest) youngest = p.age;
-        }
-        return youngest;
+        return Math.min(...people.map(p => p.age));  // 좌항에서 명시적으로 할당되지 않은 나머지 배열 값들을 사용
     }
 }
 
