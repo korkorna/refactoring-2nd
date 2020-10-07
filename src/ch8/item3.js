@@ -13,10 +13,16 @@ function renderPerson(outStream, person) {
 function photoDiv(p) {
     return [
         `<div>`,
-        `<p>제목 : ${p.title}</p>`,
-        emitPhotoData(p),
+        zznew(p),
         `</div>`
     ].join(`\n`);
+}
+
+function zznew(p) {
+    return [
+        `<p>제목 : ${p.title}</p>`,
+        emitPhotoData(p),
+    ].join('\n');
 }
 
 function emitPhotoData(aPhoto) {
