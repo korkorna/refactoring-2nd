@@ -17,7 +17,8 @@ function listRecentPhotos(outStream, photos) {
         .filter(p => p.date > recentDateCutoff())
         .forEach(p => {
             outStream.write("<div>\n");
-            emitPhotoData(outStream, p);
+            zztmp(outStream, p);
+            outStream.write(`<p>location: ${p.location}</p>\n`);
             outStream.write("</div>\n");
         });
 }
