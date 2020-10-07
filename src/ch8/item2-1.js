@@ -11,14 +11,14 @@ class Customer {
         this._setDiscountRate(discountRate);
     }
 
-    get discountRate() { return this._discountRate; }
-    _setDiscountRate(aNumber) {this._discountRate = aNumber;}  // public setter를 만들고 싶지 않아서
+    get discountRate() { return this._contract.discountRate; }
+    _setDiscountRate(aNumber) {this._contract.discountRate = aNumber;}  // public setter를 만들고 싶지 않아서
     becomePreferred() {
         this._setDiscountRate(0.03);
         // 다른 멋진 일들
     }
     applyDiscount(amount) {
-        return amount.subtract(amount.multiple(this._discountRate));
+        return amount.subtract(amount.multiple(this.discountRate));
     }
 }
 
