@@ -13,4 +13,18 @@ function disabilityAmount(anEmployee) {
     }
 }
 
+/**
+ * and 사용하기
+ *
+
+ if (anEmployee.onVacation)
+    if (anEmployee.seniority > 10)
+        return 1;
+    return 0.5;
+
+ // and 연산 결합
+ if ((anEmployee.onVacation)
+     && (anEmployee.seniority > 10)) return 1;
+ return 0.5;
+
 module.exports = disabilityAmount;
