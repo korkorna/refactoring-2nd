@@ -10,12 +10,16 @@ const plan = {
 
 function charge(aDate, quantity) {
     let charge = 0.0;
-    if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd)) {
+    if (summer()) {
         charge = quantity * plan.summerRate;
     } else {
         charge = quantity * plan.regularRate + plan.reqularServiceCharge;
     }
-    return charge
+    return charge;
+
+    function summer() {
+        return !aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd);
+    }
 }
 
 class CustomDate {
