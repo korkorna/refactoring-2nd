@@ -35,16 +35,7 @@ class Bird {
     }
 
     get plumage() {   //깃털상태
-        switch (this.type) {
-            case '유럽 제비':
-                throw "오류 발생";
-            case '아프리카 제비':
-                throw "오류 발생";
-            case '노르웨이 파랑 앵무':
-                throw "오류 발생";
-            default:
-                return "알 수 없다";
-        }
+        return "알 수 없다";
     }
 
     get airSpeedVelocity() {  // 비행 속도
