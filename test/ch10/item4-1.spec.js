@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const { speeds, plumages } = require('../../src/ch10/item4');
+const { speeds, plumages } = require('../../src/ch10/item4-1');
 
 describe('Replace Conditional with Polymorphism', function () {
 
