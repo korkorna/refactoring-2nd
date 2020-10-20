@@ -9,14 +9,7 @@ const plan = {
 };
 
 function charge(aDate, quantity) {
-    let charge = 0.0;
-
-    if (summer()) {
-        charge = summerCharge();
-    } else {
-        charge = regularCharge();
-    }
-    return charge;
+    return summer() ? summerCharge() : regularCharge();
 
     function summer() {
         return !aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd);
