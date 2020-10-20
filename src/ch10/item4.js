@@ -9,11 +9,24 @@ function speeds(birds) {
 }
 
 function plumage(bird) {   //깃털상태
-    return new Bird(bird).plumage;
+    return createBird(bird).plumage;
 }
 
 function airSpeedVelocity(bird) {  // 비행 속도
-    return new Bird(bird).airSpeedVelocity;
+    return createBird(bird).airSpeedVelocity;
+}
+
+function createBird(bird) {
+    switch (bird.type) {
+        case '유럽 제비':
+            return new EuropeanSwallow(bird);
+        case '아프리카 제비':
+            return new AfricanSwallow(bird);
+        case '노르웨이 파랑 앵무':
+            return new NorwegianBlueParrot(bird);
+        default:
+            return new Bird(bird);
+    }
 }
 
 class Bird {
@@ -46,6 +59,13 @@ class Bird {
                 return null;
         }
     }
+}
+
+class EuropeanSwallow extends Bird{
+}
+class AfricanSwallow extends Bird{
+}
+class NorwegianBlueParrot extends Bird{
 }
 
 module.exports = {
