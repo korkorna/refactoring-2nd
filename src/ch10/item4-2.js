@@ -1,7 +1,15 @@
 'use strict';
 
 function rating(voyage, history) { // 투자등급
-    return new Rating(voyage, history).value;
+    return createRating(voyage, history).value;
+}
+
+function createRating(voyage, history) {
+    if (voyage.zone === "china" && history.some(v => "china" === v.zone)) {
+        return new ExperiencedChinaRating(voyage, history);
+    } else {
+        return new Rating(voyage, history);
+    }
 }
 
 class Rating {
@@ -54,6 +62,10 @@ class Rating {
         }
         return result;
     }
+}
+
+class ExperiencedChinaRating extends Rating {
+
 }
 
 module.exports = {
