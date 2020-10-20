@@ -41,10 +41,6 @@ class Rating {
         return Math.max(result, 0);
     }
 
-    get hasChinaHistory() {  // 중국을 경유하는가?
-        return this.history.some(v => "china" === v.zone);
-    }
-
     get voyageProfitFactor() { // 수익 요인
         let result = 2;
         if (this.voyage.zone === "중국") result += 1;
