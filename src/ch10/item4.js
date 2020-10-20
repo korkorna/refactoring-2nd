@@ -41,7 +41,7 @@ class Bird {
             case '아프리카 제비':
                 throw "오류 발생";
             case '노르웨이 파랑 앵무':
-                return (this.voltage > 1000) ? "그을렸다" : "예쁘다";
+                throw "오류 발생";
             default:
                 return "알 수 없다";
         }
@@ -72,6 +72,9 @@ class AfricanSwallow extends Bird{
     }
 }
 class NorwegianBlueParrot extends Bird{
+    get plumage() {
+        return (this.voltage > 1000) ? "그을렸다" : "예쁘다";
+    }
 }
 
 module.exports = {
