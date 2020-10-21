@@ -4,7 +4,7 @@ class Site {
     }
 
     get customer() {
-        return this._customer;
+        return (this._customer === "미확인 고객") ? createUnknownCustomer() : this._customer;
     }
 }
 
@@ -39,7 +39,7 @@ function createUnknownCustomer() {
 }
 
 function isUnknown(aCustomer) {
-    return aCustomer === "미확인 고객";
+    return aCustomer.isUnknown;
 }
 
 class Client1 {
