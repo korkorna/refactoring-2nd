@@ -34,6 +34,11 @@ class Customer {
     }
 }
 
+class UnknownCustomer {
+    get isUnknown() {
+        return true;
+    }
+}
 
 class Client1 {
     run () {
