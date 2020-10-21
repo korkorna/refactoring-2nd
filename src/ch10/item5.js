@@ -41,6 +41,10 @@ class UnknownCustomer {
     get isUnknown() {
         return true;
     }
+    get billingPlan() {
+        return registry.billingPlans.basic;
+    }
+    set billingPlan(arg) { }
 }
 
 function isUnkown(arg) {
@@ -60,18 +64,14 @@ class Client1 {
 class Client2 {
     run () {
         const aCustomer = site.customer;
-
-        const plan = (isUnkown(aCustomer)) ?
-            registry.billingPlans.basic
-            : aCustomer.billingPlan;
+        const plan = aCustomer.billingPlan;
     }
 }
 
 class Client3 {
     run() {
         const aCustomer = site.customer;
-
-        if (!isUnkown(aCustomer)) aCustomer.billingPlan = newPlan;
+        aCustomer.billingPlan = newPlan;
     }
 }
 
