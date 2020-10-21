@@ -43,10 +43,6 @@ function createUnknownCustomer() {
     }
 }
 
-function isUnknown(aCustomer) {
-    return aCustomer.isUnknown;
-}
-
 class Client1 {
     run () {
         const aCustomer = site.customer;
