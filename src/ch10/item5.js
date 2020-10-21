@@ -57,12 +57,6 @@ class NullPaymentHistory {
     }
 }
 
-function isUnkown(arg) {
-    if (!((arg instanceof Customer) || (arg instanceof UnknownCustomer)))
-        throw new Error('잘못된 값과 비교: <${arg}>');
-    return arg.isUnknown();
-}
-
 class Client1 {
     run () {
         const aCustomer = site.customer;
@@ -91,3 +85,4 @@ class Client4 {
         const weeksDelinquent = aCustomer.paymentHistory.weeksDelinquentInLastYear;
     }
 }
+
