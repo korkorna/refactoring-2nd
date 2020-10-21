@@ -38,12 +38,16 @@ function createUnknownCustomer() {
     }
 }
 
+function isUnknown(aCustomer) {
+    return aCustomer === "미확인 고객";
+}
+
 class Client1 {
     run () {
         const aCustomer = site.customer;
         // ... 수많은 코드 ...
         let customerName;
-        if (aCustomer === "미확인 고객") customerName = "거주자";
+        if (isUnknown(aCustomer)) customerName = "거주자";
         else customerName = aCustomer.name;
     }
 }
@@ -52,7 +56,7 @@ class Client2 {
     run () {
         const aCustomer = site.customer;
 
-        const plan = (aCustomer === "미확인 고객") ?
+        const plan = (isUnknown(aCustomer) ?
             registry.billingPlans.basic
             : aCustomer.billingPlan;
     }
@@ -62,7 +66,7 @@ class Client3 {
     run() {
         const aCustomer = site.customer;
 
-        const weeksDelinquent = (aCustomer === "미확인 고객") ?
+        const weeksDelinquent = isUnknown(aCustomer) ?
             0
             : aCustomer.paymentHistory.weeksDelinquentInLastYear;
     }
