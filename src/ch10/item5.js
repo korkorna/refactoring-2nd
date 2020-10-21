@@ -35,6 +35,9 @@ class Customer {
 }
 
 class UnknownCustomer {
+    get name() {
+        return '거주자';
+    }
     get isUnknown() {
         return true;
     }
@@ -50,9 +53,7 @@ class Client1 {
     run () {
         const aCustomer = site.customer;
         // ... 수많은 코드 ...
-        let customerName;
-        if (isUnkown(aCustomer)) customerName = "거주자";
-        else customerName = aCustomer.name;
+        let customerName = aCustomer.name;
     }
 }
 
