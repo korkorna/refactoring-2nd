@@ -29,7 +29,11 @@ class Customer {
     get paymentHistory() {
         return this._paymentHistory;
     }
+    get isUnknown() {
+        return false;
+    }
 }
+
 
 class Client1 {
     run () {
