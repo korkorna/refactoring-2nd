@@ -36,6 +36,7 @@ function createUnknownCustomer() {
     return {
         isUnknown: true,
         name: '거주자',
+        billingPlan: registry.billingPlans.basic,
     }
 }
 
@@ -54,10 +55,7 @@ class Client1 {
 class Client2 {
     run () {
         const aCustomer = site.customer;
-
-        const plan = (isUnknown(aCustomer) ?
-            registry.billingPlans.basic
-            : aCustomer.billingPlan;
+        const plan = aCustomer.billingPlan;
     }
 }
 
