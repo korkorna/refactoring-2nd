@@ -28,6 +28,9 @@ function enrichSite(inputSite) {
         isUnknown : true,
         name: '거주자',
         billingPlan: registry.billingPlans.basic,
+        paymentHistory: {
+            weeksDelinquentInLastYear: 0,
+        },
     };
     if (isUnknown(result.customer)) {
         result.customer = unknownCustomer;
@@ -68,8 +71,6 @@ class Client3 {
         const rawSite = acquireSiteData();
         const site = enrichSite(rawSite);
         const aCustomer = site.customer
-        const weeksDelinquent = isUnknown(aCustomer) ?
-            0
-            : aCustomer.paymentHistory.weeksDelinquentInLastYear;
+        const weeksDelinquent = aCustomer.paymentHistory.weeksDelinquentInLastYear;
     }
 }
