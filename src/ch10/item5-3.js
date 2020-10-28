@@ -26,6 +26,10 @@ function enrichSite(inputSite) {
     return _.cloneDeep(inputSite);
 }
 
+function isUnknown(aCustomer) {
+    return aCustomer === "미확인 고객";
+}
+
 class Client1 {
     run () {
         const rawSite = acquireSiteData();
@@ -33,7 +37,7 @@ class Client1 {
         const aCustomer = site.customer;
         // ...
         let customerName;
-        if (aCustomer === "미확인 고객") customerName = "거주자";
+        if (isUnknown(aCustomer)) customerName = "거주자";
         else customerName = aCustomer.name;
     }
 }
@@ -43,7 +47,7 @@ class Client2 {
         const rawSite = acquireSiteData();
         const site = enrichSite(rawSite);
         const aCustomer = site.customer;
-        const plan = (aCustomer === "미확인 고객") ?
+        const plan = isUnknown(aCustomer) ?
             registry.billingPlans.basic
             : aCustomer.billingPlan;
     }
@@ -54,7 +58,7 @@ class Client3 {
         const rawSite = acquireSiteData();
         const site = enrichSite(rawSite);
         const aCustomer = site.customer
-        const weeksDelinquent = (aCustomer === "미확인 고객") ?
+        const weeksDelinquent = isUnknown(aCustomer) ?
             0
             : aCustomer.paymentHistory.weeksDelinquentInLastYear;
     }
