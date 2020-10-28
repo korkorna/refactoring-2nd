@@ -18,11 +18,18 @@ const site_2 = {
     customer: '미확인 고객'
 }
 
+function acquireSiteData() {
+    return (Math.random() >= 0.5) ? site_1 : site_2;
+}
 
+function enrichSite(inputSite) {
+    return _.cloneDeep(inputSite);
+}
 
 class Client1 {
     run () {
-        const site = acquireSiteData();
+        const rawSite = acquireSiteData();
+        const site = enrichSite(rawSite);
         const aCustomer = site.customer;
         // ...
         let customerName;
@@ -33,6 +40,8 @@ class Client1 {
 
 class Client2 {
     run () {
+        const rawSite = acquireSiteData();
+        const site = enrichSite(rawSite);
         const aCustomer = site.customer;
         const plan = (aCustomer === "미확인 고객") ?
             registry.billingPlans.basic
@@ -42,6 +51,8 @@ class Client2 {
 
 class Client3 {
     run() {
+        const rawSite = acquireSiteData();
+        const site = enrichSite(rawSite);
         const aCustomer = site.customer
         const weeksDelinquent = (aCustomer === "미확인 고객") ?
             0
