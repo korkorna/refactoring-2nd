@@ -9,7 +9,7 @@ function localShippingRules(country) {
 function calculateShippingCosts(anOrder) {
     // 관련없는 코드
     const shippingRules = localShippingRules(anOrder.country);
-    if (shippingRules < 0) return shippingRules; // 오류 전파
+    if (shippingRules < 0) throws new Error('오류코드가 다 사라지지 않았습니다.');
     // 더 관련없는 코드
 }
 
