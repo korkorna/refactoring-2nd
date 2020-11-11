@@ -17,7 +17,12 @@ function calculateShippingCosts(anOrder) {
 class Client1 {
     run() {
         const errorList = [];
-        const status = calculateShippingCosts(orderData);
+        const status;
+        try {
+            status = calculateShippingCosts(orderData);
+        } catch (e) {
+            throw e;
+        }
         if (status < 0) errorList.push({order: orderData, errorCode: status});
     }
 }
