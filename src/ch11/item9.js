@@ -11,7 +11,7 @@ class Scorer {
         this._scoringGuide = scoringGuide;
     }
     execute() {
-        let result = 0;
+        this._result = 0;
         let healthLevel = 0;
         let highMedicalRiskFlag = false;
 
@@ -23,11 +23,11 @@ class Scorer {
         let certificationGrade = "regular";
         if (this._scoringGuide.stateWithLowCertification(this._candidate.originState)) {
             certificationGrade = "low";
-            result -= 5;
+            this._result -= 5;
         }
         // 비슷한 코드가 한참 이어짐
-        result -= Math.max(healthLevel - 5, 0);
-        return result;
+        this._result -= Math.max(healthLevel - 5, 0);
+        return this._result;
     }
 }
 
