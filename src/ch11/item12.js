@@ -9,7 +9,6 @@ function localShippingRules(country) {
 function calculateShippingCosts(anOrder) {
     // 관련없는 코드
     const shippingRules = localShippingRules(anOrder.country);
-    if (shippingRules < 0) throws new Error('오류코드가 다 사라지지 않았습니다.');
     // 더 관련없는 코드
 }
 
@@ -37,6 +36,5 @@ class Client1 {
             else
                 throw e;
         }
-        if (status < 0) errorList.push({order: orderData, errorCode: status});
     }
 }
