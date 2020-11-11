@@ -1,10 +1,9 @@
 'use strict';
 
 function calculate () {
-    let totalAscent = 0;
+    const totalAscent = calculateAscent();
     let totalTime = 0;
     let totalDistance = 0;
-    totalAscent = calculateAscent();
     calculateTime();
     calculateDistance();
     const pace = totalTime / 60 / totalDistance;
