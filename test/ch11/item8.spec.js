@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const expect = require('chai').expect;
 
-const Employee = require('../../src/ch11/item8');
+const { Employee, createEmployee } = require('../../src/ch11/item8');
 
 describe('Replace Constructor With Factory Function', function () {
 
@@ -11,6 +11,7 @@ describe('Replace Constructor With Factory Function', function () {
             empType: 'M'
         };
         const emp = new Employee(document.name, document.empType);
+        expect(createEmployee(document.name, document.empType)).to.deep.equal(emp);
     });
 
 });

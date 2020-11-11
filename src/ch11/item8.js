@@ -25,14 +25,17 @@ function createEmployee(name, typeCode) {
 
 class Client1 {
     run(document) {
-        const candidate = new Employee(document.name, document.empType);
+        const candidate = createEmployee(document.name, document.empType);
     }
 }
 
 class Client2 {
     run(document) {
-        const candidate = new Employee(document.name, 'E');
+        const candidate = createEmployee(document.name, 'E');
     }
 }
 
-module.exports = Employee;
+module.exports = {
+    Employee,
+    createEmployee
+};
