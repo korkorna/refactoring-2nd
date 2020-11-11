@@ -1,22 +1,19 @@
 'use strict';
 
 class ChargeCalculator {
-    constructor( usage, provider) {
-        this._usage = usage;
-        this._provider = provider;
+    constructor() {
     }
-
     get baseCharge() {
         return this._customer.baseRate * this._usage;
     }
     charge(customer, usage, provider) {
-        const baseCharge = customer.baseRate * this._usage;
-        return baseCharge + this._provider.connectionCharge;
+        const baseCharge = customer.baseRate * usage;
+        return baseCharge + provider.connectionCharge;
     }
 }
 
 function charge(customer, usage, provider) {
-    return new ChargeCalculator(usage, provider).charge(customer, usage, provider);
+    return new ChargeCalculator().charge(customer, usage, provider);
 }
 
 module.exports = charge;
