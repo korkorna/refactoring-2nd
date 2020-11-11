@@ -27,9 +27,8 @@ class OrderProcessingError extends Error {
 class Client1 {
     run() {
         const errorList = [];
-        const status;
         try {
-            status = calculateShippingCosts(orderData);
+            calculateShippingCosts(orderData);
         } catch (e) {
             if (e instanceof OrderProcessingError)
                 errorList.push({order: orderData, errorCode: e.code});
