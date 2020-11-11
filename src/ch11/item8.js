@@ -19,6 +19,10 @@ class Employee {
     }
 }
 
+function createEmployee(name, typeCode) {
+    return new Employee(name, typeCode);
+}
+
 class Client1 {
     run(document) {
         const candidate = new Employee(document.name, document.empType);
