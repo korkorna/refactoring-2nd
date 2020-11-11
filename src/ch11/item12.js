@@ -32,7 +32,10 @@ class Client1 {
         try {
             status = calculateShippingCosts(orderData);
         } catch (e) {
-            throw e;
+            if (e instanceof OrderProcessingError)
+                errorList.push({order: orderData, errorCode: e.code});
+            else
+                throw e;
         }
         if (status < 0) errorList.push({order: orderData, errorCode: status});
     }
